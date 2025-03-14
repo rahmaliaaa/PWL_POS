@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -27,5 +28,9 @@ class UserController extends Controller
         ]);
 
         return redirect('/user');
+    }
+    public function ubah($id){
+        $user = UserModel::find($id);
+        return view('user_ubah', ['data' => $user]);
     }
 }
