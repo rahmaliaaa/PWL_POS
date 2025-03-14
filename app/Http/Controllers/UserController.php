@@ -38,12 +38,17 @@ class UserController extends Controller
 
         $user->username = $request->username;
         $user->nama = $request->nama;
-        $user->password = Hash::make('$request->password');
+        $user->password = Hash::make($request->password);
         $user->level_id = $request->level_id;
 
         $user->save();
 
         return redirect('/user');
     }
+    public function hapus($id){
+        $user = UserModel::find($id);
+        $user->delete();
 
+        return redirect('/user');
+    }
 }
