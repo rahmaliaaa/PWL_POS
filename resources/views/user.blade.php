@@ -21,7 +21,9 @@
             <td>{{ $d->username }}</td>
             <td>{{ $d->nama }}</td>
             <td>{{ $d->level_id }}</td>
-            <td><a href="/user/ubah/{{ $d->user_id }}">Ubah</a> | <a href="/user/hapus/{{ $d->user_id }}">Hapus</a></td>
+            <td><a href="/user/ubah/{{ $d->user_id }}">Ubah</a>
+                <a href="/user/hapus/{{ $d->user_id }}">Hapus</a>
+            </td>
         </tr>
     </table>
 </body>
