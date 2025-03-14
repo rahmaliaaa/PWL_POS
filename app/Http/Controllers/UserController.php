@@ -19,7 +19,7 @@ class UserController extends Controller
         
         UserModel::create($data); 
 
-        $user = UserModel::all(); 
+        $user = UserModel::find(); 
         return view('user', ['data' => $user]);
     }
 }
