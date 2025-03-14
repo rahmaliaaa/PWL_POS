@@ -53,6 +53,6 @@ class UserController extends Controller
     }
     public function index(){
         $user = UserModel::with('level')->get();
-        dd($user);
+        return view('user', ['data' => $user]);
     }
 }
