@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +58,7 @@ Route::group(['prefix' => 'level'], function () {
     Route::delete('/{id}', [LevelController::class, 'destroy']); // menghapus data level
 });
 
+
 //route CRUD kategori
 Route::group(['prefix' => 'kategori'], function () {
     Route::get('/', [KategoriController::class, 'index']); // menampilkan halaman awal kategori
@@ -66,4 +69,16 @@ Route::group(['prefix' => 'kategori'], function () {
     Route::get('/{id}/edit', [KategoriController::class, 'edit']); // menampilkan halaman form edit kategori
     Route::put('/{id}', [KategoriController::class, 'update']); // menyimpan perubahan data kategori
     Route::delete('/{id}', [KategoriController::class, 'destroy']); // menghapus data kategori
+});
+
+//route CRUD supplier
+Route::group(['prefix' => 'supplier'], function () {
+    Route::get('/', [SupplierController::class, 'index']);
+    Route::post('/list', [SupplierController::class, 'list']);
+    Route::get('/create', [SupplierController::class, 'create']);
+    Route::post('/', [SupplierController::class, 'store']);
+    Route::get('/{id}', [SupplierController::class, 'show']);
+    Route::get('/{id}/edit', [SupplierController::class, 'edit']);
+    Route::put('/{id}', [SupplierController::class, 'update']);
+    Route::delete('/{id}', [SupplierController::class, 'destroy']);
 });

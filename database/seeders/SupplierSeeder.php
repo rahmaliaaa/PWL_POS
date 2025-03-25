@@ -2,18 +2,36 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class SupplierSeeder extends Seeder
 {
     public function run(): void
     {
-        $data = [
-            ['supplier_id' => 1, 'supplier_nama' => 'PT Elektronik Jaya', 'supplier_alamat' => 'Jakarta', 'supplier_telepon' => '08123456789'],
-            ['supplier_id' => 2, 'supplier_nama' => 'CV Maju Jaya', 'supplier_alamat' => 'Bandung', 'supplier_telepon' => '08129876543'],
-            ['supplier_id' => 3, 'supplier_nama' => 'UD Sukses Makmur', 'supplier_alamat' => 'Surabaya', 'supplier_telepon' => '08567891234'],
+        $data_supplier = [
+            [
+                'supplier_kode' => 'SP001',
+                'supplier_nama' => 'PT Mencari Cinta Sejati',
+                'supplier_alamat' => 'Jl. Industri No. 10, Jawa Barat',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'supplier_kode' => 'SP002',
+                'supplier_nama' => 'PT Ajinomoto',
+                'supplier_alamat' => 'Jl. Pahlawan No. 25, Surabaya',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'supplier_kode' => 'SP003',
+                'supplier_nama' => 'PT Astra',
+                'supplier_alamat' => 'Jl. Gatot Subroto No. 27, Bandung',
+                'created_at' => Carbon::now()
+            ],
         ];
-        DB::table('m_supplier')->insert($data);
+
+        DB::table('m_supplier')->insert($data_supplier);
     }
 }
