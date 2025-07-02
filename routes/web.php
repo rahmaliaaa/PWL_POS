@@ -15,6 +15,7 @@ Route::pattern('id', '[0-9]+'); // Pastikan parameter {id} hanya berupa angka
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'postRegister']);
 
@@ -106,23 +107,20 @@ Route::middleware(['auth'])->group(function () {
         Route::group(['prefix' => 'barang'], function () {
             Route::get('/create', [BarangController::class, 'create']); // Form tambah barang
             Route::post('/', [BarangController::class, 'store']); // Simpan barang baru
-            
             // Create menggunakan AJAX
             Route::get('/create_ajax', [BarangController::class, 'create_ajax']); // Form tambah barang AJAX
             Route::post('/ajax', [BarangController::class, 'store_ajax']); // Simpan barang baru AJAX
-            
             Route::get('/{id}/edit', [BarangController::class, 'edit']); // Form edit barang
             Route::put('/{id}', [BarangController::class, 'update']); // Simpan perubahan barang
-            
             // Edit menggunakan AJAX
             Route::get('/{id}/edit_ajax', [BarangController::class, 'edit_ajax']); // Form edit barang AJAX
             Route::put('/{id}/update_ajax', [BarangController::class, 'update_ajax']); // Simpan perubahan barang AJAX
-            
             // Delete menggunakan AJAX
             Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']); // Form konfirmasi hapus barang AJAX
             Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']); // Hapus barang AJAX
-            
             Route::delete('/{id}', [BarangController::class, 'destroy']); // Hapus barang
+            Route::get('/import', [BarangController::class, 'import']); // ajax from upload excel
+            Route::post('/import_ajax', [BarangController::class, 'import_ajax']); //ajax import excel
         });
     });
 
